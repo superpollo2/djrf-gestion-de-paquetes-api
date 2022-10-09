@@ -1,6 +1,7 @@
 from django.urls import path 
 
-from .views.specific_view import (TrazabilidadCreateAPIView,TrazabilidadListAPIView,AddressListAPIView,AddressDrestroyAPIView, AddressCreateAPIView,ShippingOrderListAPIView,
+from .views.specific_view import (TrazabilidadCreateAPIView,TrazabilidadListAPIView,AddressListAPIView,AddressDrestroyAPIView,
+                                  AddressRetriveAPIView,AddressCreateAPIView,ShippingOrderListAPIView,
                                   ShippingOrderCreateAPIView ,UserCreateAPIView,UserListAPIView,PackageListAPIView, PackageCreateAPIView, PackageDrestroyAPIView)
 from .views.generical_view import ( DepartamentoListAPIView,MunicipioListAPIView,StateListAPIView, 
                                    TypeListAPIView
@@ -13,9 +14,12 @@ urlpatterns = [
     path('api/municipio', MunicipioListAPIView.as_view(), name='municipio'),
     path('api/state', StateListAPIView.as_view(), name='estado'),
     path('api/type', TypeListAPIView.as_view(), name='type'),
+    
     path('address/list', AddressListAPIView.as_view(), name='address_list'),
     path('address/create', AddressCreateAPIView.as_view(), name='address_create'),
     path('address/destroy/<int:pk>', AddressDrestroyAPIView.as_view(), name ='address_destroy'),
+    path('address/retrive/<int:pk>', AddressRetriveAPIView.as_view(), name='address_retrive'),
+    
     path('shipping/list', ShippingOrderListAPIView.as_view(), name='shipping_list'),
     path('shipping/create', ShippingOrderCreateAPIView.as_view(), name='shipping_create'),
     path('paquete/list', PackageListAPIView.as_view(), name='package_list'), 

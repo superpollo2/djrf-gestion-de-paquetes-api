@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from ..serializers.specifical_serializers import AddressSerializer,ShippingOrderSerializer,TrazabilidadSerializer,UserSerializer,PackageSerializer
 from ...models import Address, ShippingOrder, User, Package,Trazabilidad
 from ..api import (
-    GeneralListAPIView, GeneralCreateAPIView, GeneralDestroyAPIView
+    GeneralListAPIView, GeneralCreateAPIView, GeneralDestroyAPIView,GeneralRetriveAPIView
 )
 
 # HTTP methods for address model 
@@ -14,6 +14,9 @@ class AddressCreateAPIView(GeneralCreateAPIView):
     serializer_class = AddressSerializer
     
 class AddressDrestroyAPIView(GeneralDestroyAPIView):
+    serializer_class = AddressSerializer
+
+class AddressRetriveAPIView(GeneralRetriveAPIView):
     serializer_class = AddressSerializer
  
 # end HTTP methods 

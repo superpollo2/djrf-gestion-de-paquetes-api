@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Address',
             fields=[
-                ('address', models.CharField(max_length=100, primary_key=True, serialize=False)),
+                ('address', models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(

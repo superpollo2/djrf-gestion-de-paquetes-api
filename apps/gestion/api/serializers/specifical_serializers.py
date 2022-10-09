@@ -26,6 +26,7 @@ class AddressSerializer(serializers.ModelSerializer):
         
     def to_representation(self, instance):
         return{
+            'id_address': instance.id_address,
             'address': instance.address,
             'municipio': instance.municipio.municipio
             

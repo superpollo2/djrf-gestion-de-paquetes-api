@@ -43,3 +43,10 @@ class GeneralDestroyAPIView(generics.DestroyAPIView):
             return Response({'message': ' Producto eliminado correctamente'}, status = status.HTTP_200_OK) 
         return Response({'message': 'Error, no existe un registro con esos datos'}, status=status.HTTP_400_BAD_REQUEST)
             
+class GeneralRetriveAPIView(generics.RetrieveAPIView):
+    serializer_class = None 
+    
+    def get_queryset(self):
+        return  self.get_serializer().Meta.model.objects.filter(state=True)
+    
+    

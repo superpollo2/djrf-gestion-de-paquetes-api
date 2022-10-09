@@ -5,19 +5,19 @@ from  apps.gestion.models import Departamento,Municipio,Trazabilidad,Address,Use
 class DepartamentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departamento
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
 
 class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
         
 class TypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Type 
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
         
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model = State 
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)

@@ -12,6 +12,9 @@ class Departamento(BaseModel):
     def __str__(self):
         return self.departament
 
+    class Meta:
+        verbose_name = 'Departamento'
+
 class Municipio(BaseModel):
     pos_code = models.CharField(max_length=10, blank=False, null=False, primary_key=True)
     municipio = models.CharField(max_length=50, blank=False, null=False)
@@ -20,13 +23,20 @@ class Municipio(BaseModel):
     def __str__(self):
         return self.municipio   
 
+
+    class Meta:
+        verbose_name = 'Municipio'
+        
 class Address(BaseModel):
-    address = models.CharField(max_length=100, blank=False, null=False, primary_key=True)
+    id_address = models.BigAutoField(primary_key=True)
+    address = models.CharField(max_length=100, blank=False, null=False)
     municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.address  
     
+    class Meta:
+        verbose_name = 'direccion'
                
 class User(BaseModel):
     identify = models.CharField(max_length=50, blank=False, null=False, primary_key=True)
@@ -39,6 +49,10 @@ class User(BaseModel):
     def __str__(self):
         return self.identify
  
+    class Meta:
+        verbose_name = 'usuario'
+        
+        
 class Type (BaseModel):
     id_type= models.CharField(max_length=4, blank=False, null=False, primary_key=True) 
     price = models.IntegerField(default=0, null=False, blank=False) 
@@ -47,6 +61,8 @@ class Type (BaseModel):
     def __str__(self):
         return self.type
  
+    class Meta:
+        verbose_name = 'Tipo de paquete'
          
 class State(BaseModel):
     id_state= models.CharField(max_length=4, blank=False, null=False, primary_key=True) 
@@ -55,17 +71,21 @@ class State(BaseModel):
     def __str__(self):
         return self.state
     
+    class Meta:
+        verbose_name = 'Estado del envio'
 
     
 class Package(BaseModel):
-     id_package = models.BigAutoField(primary_key=True)
-     type = models.ForeignKey(Type, on_delete = models.CASCADE)
-     weight = models.IntegerField(null=False, blank=False)
-     description = models.TextField(max_length=200,blank=False, null=False)
+    id_package = models.BigAutoField(primary_key=True)
+    type = models.ForeignKey(Type, on_delete = models.CASCADE)
+    weight = models.IntegerField(null=False, blank=False)
+    description = models.TextField(max_length=200,blank=False, null=False)
       
-     def __str__(self):
+    def __str__(self):
         return str(self.id_package)
 
+    class Meta:
+        verbose_name = 'Paquete'
     
 class ShippingOrder(BaseModel):
     id_shipping = models.BigAutoField(primary_key=True)
@@ -80,6 +100,8 @@ class ShippingOrder(BaseModel):
     def __str__(self):
         return str(self.id_shipping)
     
+    class Meta:
+        verbose_name = 'Detalle del envio'
     
 class Trazabilidad(BaseModel):
     id_shipping_order = models.ForeignKey(ShippingOrder,on_delete=models.CASCADE)
@@ -88,3 +110,6 @@ class Trazabilidad(BaseModel):
     
     def __str__(self):
         return str(self.id_state)
+    
+    class Meta:
+        verbose_name = 'Trazabilidad'
