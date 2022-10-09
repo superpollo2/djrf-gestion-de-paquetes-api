@@ -7,7 +7,7 @@ class PackageSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Package
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
 
     def to_representation(self, instance):
         return {
@@ -22,7 +22,7 @@ class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
         
     def to_representation(self, instance):
         return{
@@ -36,14 +36,14 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
         
 class ShippingOrderSerializer(serializers.ModelSerializer):
 
     
     class Meta:
         model = ShippingOrder 
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
     
     def to_representation(self, instance):
         return {
@@ -62,7 +62,7 @@ class TrazabilidadSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Trazabilidad
-        fields = '__all__'
+        exclude = ('state','created_date','modified_date', 'deleted_date',)
 
     def to_representation(self, instance):
         return {

@@ -3,22 +3,41 @@ from . models import Departamento,Municipio,Trazabilidad,Address,User,Type, Stat
 # Register your models here.
 
 class TypeAdmin(admin.ModelAdmin):
-    list_display = ("id_type","type",)
-    search_fields = ("id_type",)
-    list_filter= ("type",)
+    exclude = ('created_date','modified_date','deleted_date',)
+   
+class DepartamentoAdmin(admin.ModelAdmin):
+   exclude = ('created_date','modified_date','deleted_date',) 
     
+class MunicipioAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',) 
     
-class ShippingOrderList(admin.ModelAdmin):
-    list_display = ("id_shipping","sender","addressee", "package",)
-    search_fields = ("id_shipping",)
-    list_filter= ("package",)
+class StateAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',) 
+
+class DepartamentoAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',) 
+
+class UserAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',)
     
-admin.site.register(Departamento)
-admin.site.register(Municipio)
-admin.site.register(Trazabilidad)
-admin.site.register(User)
+class TrazabilidadAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',)
+    
+class ShippingOrderAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',)
+
+class PackageAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',)
+
+class AddressAdmin(admin.ModelAdmin):
+    exclude = ('created_date','modified_date','deleted_date',)
+        
+admin.site.register(Departamento,DepartamentoAdmin)
+admin.site.register(Municipio,MunicipioAdmin)
+admin.site.register(Trazabilidad, TrazabilidadAdmin)
+admin.site.register(User, UserAdmin)
 admin.site.register(Type, TypeAdmin)
-admin.site.register(State)
-admin.site.register(Package)
-admin.site.register(ShippingOrder)
-admin.site.register(Address)
+admin.site.register(State, StateAdmin)
+admin.site.register(Package, PackageAdmin)
+admin.site.register(ShippingOrder, ShippingOrderAdmin)
+admin.site.register(Address, AddressAdmin)
