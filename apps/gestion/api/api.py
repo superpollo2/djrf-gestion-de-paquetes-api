@@ -48,7 +48,7 @@ class GeneralModelViewSet(viewsets.ModelViewSet):
 
 
 
-class GeneralListAPIView(generics.ListAPIView):
+class GeneralViewSet(viewsets.ModelViewSet):
     serializer_class = None 
     
     def get_queryset(self):
